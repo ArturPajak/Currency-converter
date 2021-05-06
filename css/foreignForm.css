@@ -1,0 +1,21 @@
+.foreignForm__container {
+    border-width: 2px;
+    border-style: groove;
+    border-image: initial;
+    border-color: black;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.foreignForm__pln {
+    background-color: #eee;
+}
+
+.foreignForm__foreignSelector {
+    background-color: #eee;
+}
+
+.foreignForm__foreignRate {
+    background-color: #eee;
+}

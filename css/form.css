@@ -1,0 +1,56 @@
+.form__polishContainer {
+    border-width: 2px;
+    border-style: groove;
+    border-image: initial;
+    border-color: black;
+}
+
+.form__polishMainHeader {
+    text-align: center;
+    font-weight: 900;
+}
+
+.form__polishCurrency {
+    background-color: #eee;
+    width: 170px;
+}
+
+.form__labelPLN {
+    text-align: center;
+    font-weight: 600;
+}
+
+.form__currencySelect {
+    margin: 20px 0px 10px;
+    text-align: center;
+    border-width: 2px;
+    border-style: groove;
+    border-image: initial;
+    border-color: black;
+}
+
+.form__currencyList {
+    text-align: justify;
+}
+
+.form__foreignMainHeader {
+    text-align: center;
+    font-weight: 900;
+}
+
+.form__selectCurrency {
+    background-color: #eee;
+}
+
+.form__foreignCurrencyHeader {
+    font-weight: 600;
+}
+
+.form__exchangeRate {
+    background-color: #eee;
+}
+
+.form__exchangeElement {
+    font-weight: 600;
+    margin-right: 32px;
+}

@@ -1,0 +1,16 @@
+.buttons {
+    text-align: center;
+}
+
+.buttons__action {
+    padding: 10px;
+    background-color: hsl(0, 0%, 83%);
+}
+
+.buttons__action:hover {
+    background-color: hsl(0, 0%, 86%);
+}
+
+.buttons__action:active {
+    background-color: hsl(0, 0%, 90%);
+}

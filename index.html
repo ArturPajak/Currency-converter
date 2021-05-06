@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kantor walut</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/form.css">
+  <link rel="stylesheet" href="css/container.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" href="css/foreignForm.css">
+  <script defer src="js/script.js"></script>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1 class="container__mainHeader">Witam w moim kantorze</h1>
+    </header>
+    <h2>Przeliczanie z PLN na obcą walutę</h2>
+    <form class="form js-form">
+      <div class="form__polishContainer">
+        <p class="form__polishMainHeader">Wpisz kwotę w PLN</p>
+        <label class="form__labelPLN">
+          <p>
+            Kwota w PLN: <input class="form__polishCurrency js-form__polishCurrency" name="PLN-Amount" type="number"
+              min="1" max="10000000" step="0.01" placeholder="Wpisz kwotę w PLN" autofocus required>
+          </p>
+        </label>
+      </div>
+      <fieldset class="form__currencySelect js-form__currencySelect">
+        <p class="form__foreignMainHeader">Wybierz walutę i domyślny kurs</p>
+        <label class="form__currencyList">
+          <span class="form__foreignCurrencyHeader">Wybierz walutę:</span>
+          <select name="currency" class="form__selectCurrency js-form__selectCurrency" required>
+            <option class="js-form__defaultOption" value="chooseOption">Wpisz kurs samodzielnie</option>
+            <option class="js-form__optionDollar" value="3.7940">Dolar amerykański</option>
+            <option class="js-form__optionEuro" value="4.5539">Euro</option>
+            <option class="js-form__optionPound" value="5.2622">Funt szterling</option>
+          </select>
+        </label>
+        <label>
+          <p class="form__exchangeElement">
+            Wpisz kurs: <input class="form__exchangeRate js-form__exchangeRate" type="number" min="0" max="10000000"
+              step="0.0001" placeholder="Wpisz kurs" required>
+          </p>
+        </label>
+      </fieldset>
+      <div class="buttons">
+        <button class="buttons__action">Przelicz</button>
+        <button class="buttons__action js-buttons__reset" type="reset">Zresetuj</button>
+      </div>
+      <p>Wynik: <span class="js-amount"></span> </p>
+    </form>
+
+    <p>
+      *Domyślne kursy walut zaczerpnięte ze strony <a target="_blank"
+        href="https://www.nbp.pl/home.aspx?navid=archa&c=/ascx/tabarch.ascx&n=a084z210504"
+        title="Tabela z kursami walut, z których korzystałem">NBP</a> na
+      dzień 04-05-2021
+    </p>
+
+  </div>
+  <div class="container container--fixed">
+    <h2>Przeliczanie z obcej waluty na PLN</h2>
+    <form class="foreignForm js-foreignForm">
+      <div class="foreignForm__container">
+        <p>
+          <label>
+            Wpisz kwotę: <input class="foreignForm__pln js-foreignForm__pln" type="number" min="1" max="1000000"
+              name="foreign-amount" step="0.01" placeholder="Wpisz kwotę" required>
+          </label>
+        </p>
+        <p>
+          <label>
+            <span>Wybierz kurs:<span>
+                <select name="select-currency" class="foreignForm__foreignSelector js-foreignForm__foreignSelector"
+                  required>
+                  <option value="chooser">Wpisz kurs samodzielnie</option>
+                  <option value="Dolar-amerykański">Dolar amerykański</option>
+                  <option value="Euro">Euro</option>
+                  <option value="Funt-szterling">Funt szterling</option>
+                </select>
+          </label>
+        </p>
+        <p>
+          <label>
+            Wybrany kurs: <input class="foreignForm__foreignRate js-foreignForm__foreignRate" type="number" min="1"
+              max="1000000" name="foreign-rate" step="0.0001" required>
+          </label>
+        </p>
+      </div>
+      <div class="buttons">
+        <button class="buttons__action">Przelicz</button>
+        <button class="buttons__action js-buttons__resetForeing" type="reset">Zresetuj</button>
+      </div>
+    </form>
+    <p>Wynik: <span class="foreignForm__sum js-foreignForm__sum"></span></p>
+    <p>
+      *Domyślne kursy walut zaczerpnięte ze strony <a target="_blank"
+        href="https://www.nbp.pl/home.aspx?navid=archa&c=/ascx/tabarch.ascx&n=a084z210504"
+        title="Tabela z kursami walut, z których korzystałem">NBP</a> na
+      dzień 04-05-2021
+    </p>
+  </div>
+</body>
+
+</html>
