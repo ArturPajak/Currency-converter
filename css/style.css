@@ -9,5 +9,9 @@ html {
 
 body {
     font-family: 'Lato', sans-serif;
-    background-color: #eeeeee;
+    background-image: url(../img/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
