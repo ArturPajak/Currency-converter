@@ -43,5 +43,5 @@ There is also a message that says from where I got the exchange rates, there is 
 #### Checklist
 
 - [ ] Put the first form into one div
-- [ ] Add a background image
-- [ ] Use function in Java Script, wherever I can 
+- [x] Add a background image
+- [x] Use function in Java Script, wherever I can 
