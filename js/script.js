@@ -1,113 +1,109 @@
-let form = document.querySelector(".js-form");
-let polishCurrency = document.querySelector(".js-form__polishCurrency");
-let selectCurrency = document.querySelector(".js-form__selectCurrency");
-let exchangeRate = document.querySelector(".js-form__exchangeRate");
-let amount = document.querySelector(".js-amount");
-let resetButton = document.querySelector(".js-buttons__reset");
+{
+    {
+        const selectCurrency = document.querySelector(".js-form__selectCurrency");
+        const exchangeRate = document.querySelector(".js-form__exchangeRate");
+        const amount = document.querySelector(".js-form__amount");
+        const resetButton = document.querySelector(".js-buttons__reset");
+        const form = document.querySelector(".js-form");
 
-let foreignForm = document.querySelector(".js-foreignForm");
-let foreignSelector = document.querySelector(".js-foreignForm__foreignSelector");
-let foreignRate = document.querySelector(".js-foreignForm__foreignRate");
-let foreignSum = document.querySelector(".js-foreignForm__sum");
-let foreignPLN = document.querySelector(".js-foreignForm__pln");
-let resetForeign = document.querySelector(".js-buttons__resetForeing");
+        const currencyChooser = () => {
+            switch (selectCurrency.value) {
+                case "3.7940":
+                    const rateDollar = +selectCurrency.value;
+                    return exchangeRate.value = +rateDollar.toFixed(2);
+                case "4.5539":
+                    const rateEuro = +selectCurrency.value;
+                    return exchangeRate.value = +rateEuro.toFixed(2);
+                case "5.2622":
+                    const ratePound = +selectCurrency.value;
+                    return exchangeRate.value = +ratePound.toFixed(2);
+                default:
+                    return selectCurrency.value = "chooseOption";
+            }
+        }
 
-form.addEventListener("input", () => {
-    switch (selectCurrency.value) {
-        case "3.7940":
-            let rateDollar = +selectCurrency.value;
-            exchangeRate.value = +rateDollar.toFixed(2);
-            break;
-        case "4.5539":
-            let rateEuro = +selectCurrency.value;
-            exchangeRate.value = +rateEuro.toFixed(2);
-            break;
-        case "5.2622":
-            let ratePound = +selectCurrency.value;
-            exchangeRate.value = +ratePound.toFixed(2)
-            break;
+        const currencyCalculator = () => {
+            const polishCurrency = document.querySelector(".js-form__polishCurrency");
+            switch (selectCurrency.value) {
+                case "3.7940":
+                    const symbolDollar = "USD";
+                    const sumDollar = +polishCurrency.value / +exchangeRate.value;
+                    return amount.innerText = `${sumDollar.toFixed(2)} ${symbolDollar}`;
+                case "4.5539":
+                    const symbolEuro = "EUR";
+                    const sumEuro = +polishCurrency.value / +exchangeRate.value;
+                    return amount.innerText = `${sumEuro.toFixed(2)} ${symbolEuro}`;
+                case "5.2622":
+                    const symbolPound = "GBP";
+                    const sumPound = +polishCurrency.value / +exchangeRate.value;
+                    return amount.innerText = `${sumPound.toFixed(2)} ${symbolPound}`;
+                case "chooseOption":
+                    const sum = +polishCurrency.value / +exchangeRate.value;
+                    return amount.innerText = `${sum.toFixed(2)} W wybranej przez Ciebie walucie`;
+                default:
+                    return selectCurrency.value = "chooseOption";
+            }
+        }
 
-        default:
-            selectCurrency.value = "chooseOption"
-            break;
-    }
-});
+        form.addEventListener("input", currencyChooser);
 
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    switch (selectCurrency.value) {
-        case "3.7940":
-            let symbolDollar = "USD";
-            let sumDollar;
-            sumDollar = +polishCurrency.value / +exchangeRate.value;
-            amount.innerText = `${sumDollar.toFixed(2)} ${symbolDollar}`;
-            break;
-        case "4.5539":
-            let symbolEuro = "EUR";
-            let sumEuro;
-            sumEuro = +polishCurrency.value / +exchangeRate.value;
-            amount.innerText = `${sumEuro.toFixed(2)} ${symbolEuro}`;
-            break;
-        case "5.2622":
-            let symbolPound = "GBP";
-            let sumPound;
-            sumPound = +polishCurrency.value / +exchangeRate.value;
-            amount.innerText = `${sumPound.toFixed(2)} ${symbolPound}`;
-            break;
-        case "chooseOption":
-            let sum;
-            sum = +polishCurrency.value / +exchangeRate.value;
-            amount.innerText = `${sum.toFixed(2)} W wybranej przez Ciebie walucie`;
-            break;
-        default:
-            selectCurrency.value = "chooseOption";
-            break;
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            currencyCalculator();
+        });
+
+        resetButton.addEventListener("click", () => {
+            amount.innerText = "";
+        });
     }
 
-});
+    {
+        const foreignForm = document.querySelector(".js-foreignForm");
+        const foreignSelector = document.querySelector(".js-foreignForm__foreignSelector");
+        const foreignRate = document.querySelector(".js-foreignForm__foreignRate");
+        const foreignSum = document.querySelector(".js-foreignForm__sum");
+        const resetForeign = document.querySelector(".js-buttons__resetForeing");
 
-resetButton.addEventListener("click", () => {
-    amount.innerText = "";
-});
+        const foreignCurrencyChooser = () => {
+            switch (foreignSelector.value) {
+                case "Dolar-amerykański":
+                    return foreignRate.value = "3.79";
+                case "Euro":
+                    return foreignRate.value = "4.55";
+                case "Funt-szterling":
+                    return foreignRate.value = "5.26";
+                default:
+                    break;
+            }
+        }
 
-foreignForm.addEventListener("input", () => {
-    switch (foreignSelector.value) {
-        case "Dolar-amerykański":
-            foreignRate.value = "3.79";
-            break;
-        case "Euro":
-            foreignRate.value = "4.55";
-            break;
-        case "Funt-szterling":
-            foreignRate.value = "5.26";
-            break;
-        default:
-            break;
+        const foreignCurrencyCalculator = () => {
+            const foreignPLN = document.querySelector(".js-foreignForm__pln");
+            switch (foreignSelector.value) {
+                case "Dolar-amerykański":
+                    const summaryDollar = +foreignPLN.value * +foreignRate.value;
+                    return foreignSum.innerText = `${summaryDollar} PLN`;
+                case "Euro":
+                    const summaryEuro = +foreignPLN.value * +foreignRate.value;
+                    return foreignSum.innerText = `${summaryEuro} PLN`
+                case "Funt-szterling":
+                    const summaryPound = +foreignPLN.value * +foreignRate.value;
+                    return foreignSum.innerText = `${summaryPound} PLN`
+                default:
+                    const summaryGeneral = +foreignPLN.value * +foreignRate.value;
+                    return foreignSum.innerText = `${summaryGeneral} PLN`
+            }
+        }
+
+        foreignForm.addEventListener("input", foreignCurrencyChooser);
+
+        foreignForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            foreignCurrencyCalculator();
+        });
+
+        resetForeign.addEventListener("click", () => {
+            foreignSum.innerText = "";
+        });
     }
-});
-
-foreignForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    switch (foreignSelector.value) {
-        case "Dolar-amerykański":
-            let summaryDollar = +foreignPLN.value * +foreignRate.value;
-            foreignSum.innerText = `${summaryDollar} PLN`;
-            break;
-        case "Euro":
-            let summaryEuro = +foreignPLN.value * +foreignRate.value;
-            foreignSum.innerText = `${summaryEuro} PLN`
-            break;
-        case "Funt-szterling":
-            let summaryPound = +foreignPLN.value * +foreignRate.value;
-            foreignSum.innerText = `${summaryPound} PLN`
-            break;
-        default:
-            let summaryGeneral = +foreignPLN.value * +foreignRate.value;
-            foreignSum.innerText = `${summaryGeneral} PLN`
-            break;
-    }
-});
-
-resetForeign.addEventListener("click", () => {
-    foreignSum.innerText = "";
-});
+}
