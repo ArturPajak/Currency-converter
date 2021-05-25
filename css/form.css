@@ -54,3 +54,7 @@
     font-weight: 600;
     margin-right: 32px;
 }
+
+.form__sumParagraph {
+    text-align: center;
+}

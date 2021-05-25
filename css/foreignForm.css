@@ -19,3 +19,7 @@
 .foreignForm__foreignRate {
     background-color: #eee;
 }
+
+.foreignForm__sumParagraph {
+    text-align: center;
+}
